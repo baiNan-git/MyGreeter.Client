@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGreeter.Client</title>
+</head>
+<body>
+    <div class="greet"></div>
+    <div>
+        Now:<input class="time" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" />
+        <button class="btn">submit</button>
+    </div>
+    <script>
+        const greet = document.querySelector('.greet')
+        const time = document.querySelector('.time')
+        const btn = document.querySelector('.btn')
+        const hours = new Date().getHours()
+        time.value = hours
+        if (hours >= 12 && hours < 18) {
+            greet.innerHTML = 'Good afternoon~'
+        } else if (hours >= 6 && hours < 12) {
+            greet.innerHTML = 'Good morning~'
+        } else {
+            greet.innerHTML = 'Good evening~'
+        }
+        function getTime () {
+            const timeValue = time.value
+            if (timeValue >= 12 && timeValue < 18) {
+                greet.innerHTML = 'Good afternoon~'
+            } else if (timeValue >= 6 && timeValue < 12) {
+                greet.innerHTML = 'Good morning~'
+            } else {
+                greet.innerHTML = 'Good evening~'
+            }
+        }
+        btn.onclick = function() {
+            getTime()
+        }
+
+        // 1、可以改进输入框校验（数字、范围等），提升准确性
+        // 2、优化样式(这边没有加)，美观
+        // 3、可以加入时间选择UI库(这边没有加)，提升美观和用户体验
+    </script>
+</body>
+</html>
